@@ -24,12 +24,12 @@ canvas.create_rectangle(370, 400, 330, 370, fill='black')
 
 x = 60
 y = 60
-n = 10
+n = 45
 p = 350
 for i in range(n, 300, 10):
-    y_add = p / (2 * math.pi)
-    canvas.create_line(x, y, x + y_add - 100, y + y_add - 100, fill='yellow')
-#Почему цикл не сработал?
+    x_add = 3 * math.cos(n)
+    y_add = 3 * math.sin(n)
+    canvas.create_line(x, y, x + x_add - 100, y + y_add - 100, fill='yellow')
 
 # ----------------------------------------------
 
