@@ -6,4 +6,6 @@ def compare(a,b):
     if b>a:
         print(f"Второе число больше \nОно равно {b}")
 
-compare(200,150)
+a = input(f"Введите первое число")
+b = input(f"Введите второе число")
+compare(a,b)
