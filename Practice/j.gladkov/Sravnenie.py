@@ -1,8 +1,5 @@
 def compare(a, b):
-    if a>=b:
-        print (str(a) + "is bigger")
-    else:
-        print( str(b) + "is bigger")
+  
 x = 155
 y = 13574
 compare(x,y)
