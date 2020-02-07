@@ -17,17 +17,6 @@ canvas.yview_scroll(8, 'units')  # otherwise it's clipped off
 
 
 # Написать свой код сюда ----------------------
-def compare(a, b):
-    if a >= b:
-        print(str(a) +  " is bigger")
-    else:
-        print(str(a) + " is lower")
-
-x = 0
-y = 1
-n = 100
-
-compare(x ,y)
 
 canvas.create_rectangle(50, 100, 450, 250, fill='red')
 canvas.create_oval (100, 225, 175, 300, fill='pink')
