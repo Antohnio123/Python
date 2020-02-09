@@ -1,4 +1,4 @@
-s = str(input('Input string (at least, five symbols!): '))
+s = str(input('Input string (at least, five characters!): '))
 l = len(s)
 if l<5:
     print('Your string is too short!')
