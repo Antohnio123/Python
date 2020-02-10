@@ -11,7 +11,7 @@ def sravnen(a, b):
         print (str(a) + "is bigger")
     else:
         print( str(b) + "is bigger")
-z = input ( "first value ")
-v = input ( "second value")
+a = input ( "first value ")
+b= input ( "second value")
 
-sravnen(z,v)
+sravnen(a,b)
