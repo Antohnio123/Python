@@ -3,7 +3,7 @@ l = input("Введите последовательность через про
 for i in range(len(l)):
     minimum = i
     for j in range(i + 1, len(l)):
-        if l[j] < l[minimum]:
+        if int(l[j]) < int(l[minimum]):
             minimum = j
     l[i], l[minimum] = l[minimum], l[i]
 
