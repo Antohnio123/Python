@@ -15,5 +15,4 @@ m = int(input('Enter number of columns: '))
 x = int(input('Enter number: '))#число, столбцы с которым нужно удалить
 arr = [[randint(1, 10) for j in range(m)] for i in range(n)]
 print(arr)
-print(len(arr))
 print(column_remove(arr, x))
