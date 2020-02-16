@@ -1,4 +1,6 @@
 from Man import Man
+import time
+import random
 
 
 class Pupil(Man):
@@ -7,9 +9,6 @@ class Pupil(Man):
         super().__init__(name)
 
     def solve_task(self):
-        import time
-        import random
         print("Wait a second...")
         time.sleep(random.randint(3, 6))
         super().solve_task()
-
