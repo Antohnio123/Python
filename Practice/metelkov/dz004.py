@@ -42,23 +42,56 @@ print("sorted: " + str(arr))
 print('--------------')
 
 def swap(a, b):
-    #a, b = b, a
-    #prom = ''
-    #prom = b
-    #b = a
-    #a = prom
     return b, a
 
-dlin = len(arr)
-massnew = []
-promezhmass = []
-for i in range(dlin - 1):
-    min = i
-    for j in range(i + 1, dlin - 1):
-        if a[j] < a[min]:
-            min = j
-        if min != i:
-            #a, b = b, a
-            swap(a[i], a[min])
-            #a[i], a[min] = a[min], a[i]
-    print("ddd")
+
+					#nayti minimal element, v stroke, i pomestit ego
+					#na pervoe mesto, pomenyav mestami s tekushim, potom
+					#sravnit sled element so vsey strokoy n naimenshiy
+					#pomestit vtorim, pomenyav mestami s tekushim
+                    #algoritm podsmotrel tut:
+					# https://www.youtube.com/watch?v=KZxP5JqtKKA
+arr = [0, 3, 24, 2, 3, 7] 		#dan ne sortirovannoy massiv
+print("dan massiv: " + str(arr)) 	#prosto vicodin massiv - pokazivaem original
+#neverniy var
+arr.sort() 			            	#vstroennaya funkciya sortirovki
+print("sorted: " + str(arr))		#vivodim otsortirovanniy massiv
+print('--------------') 		#razdelitel varianta
+
+def swap(a, b): 			#sozdaem funkciyu obmena mestami
+    return b, a 			#vozvrat znacheniy
+dlin = len(arr) 			#opredelyaem dlinu massiva
+#massnew = []				#ne ispolzoval
+#promezhmass = []			#ne ispolzoval
+for i in range(dlin - 1): 		#perebor pervogo elementa massiva do predposlednego
+    min = i 				    #novaya peremenneya, minimalniy element = elementu massiva
+    for j in range(i + 1, dlin - 1):   #perebor s posleduyushimi elementami do predposlednego
+        if arr[j] < arr[min]:	   #sravnivaem tekushiy s kotorim vzyali v proshlom cikle
+            min = j 		       #prisvaivaem novoe znachenie 'min' esli tekushiy menishe
+            if min != i: 		   #esli pereberaemoe znachenie ne ravno znache iz pervogo
+					               #cikla - s kotorim sravnivaem
+                swap(arr[i], arr[min])      #menyaem elementy mestami
+print(arr) 					                #vivodim otsortirovanniy massiv
+
+#----------------------------------------------------
+
+
+# otkrit fayl na chtenie i zamenit TAB na 4 space, a 4 space na TAB
+fo = open("myfile.txt", "r")                        #otkryt file s imenem na chtenie
+line = fo.readline()                                #chitaem pervuyu stroku v peremennuyu
+print("str in file: " + str(line))                  #pokazivaem, chto prochitali
+fo.close()                                          #zakrivaem file
+dlinline = len(line)
+markspace = ' '
+marktab = '\t'
+zaglushka = ''
+print('-------- str replaced ---------------')
+for i in range(len(line)):
+    zaglushka = zaglushka + line[i]
+    if line[i] == marktab:
+        zaglushka = zaglushka.replace(marktab, markspace*4)
+       # zaglushka = zaglushka + markspace *4
+
+#print(zaglushka)
+line = zaglushka
+print(line)

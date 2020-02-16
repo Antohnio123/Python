@@ -1,5 +1,5 @@
 # Entering string
 s = input("Enter two-words string: ").strip().split()
 s.reverse()
-s = ' '.join(s)
+s = '-'.join(s)
 print("Reversed string:", s)
