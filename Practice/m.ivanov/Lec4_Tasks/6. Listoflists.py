@@ -2,11 +2,12 @@
 
 
 def column_remove(a, x):
-    for i in range(len(a)):
-        while x in a[i]:
-            j = a[i].index(x)
-            b = list(zip(*a))[:j] + list(zip(*a))[j + 1:]#не нашёл метод для итерации по столбцам, поэтому транспонируем матрицу и собираем её без строки с числом x
-            a = list(zip(*b))#возвращаем матрицу к исходному виду
+    b = list(zip(*a))
+    c=[]
+    for i in range(len(b)):
+        if x not in b[i]:
+            c.append(b[i])
+    a = list(zip(*c))
     return a
 
 
