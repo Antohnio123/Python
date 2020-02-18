@@ -1,3 +1,8 @@
+import calendar
+print(calendar.TextCalendar().formatyear(theyear=2020))
+input()
+exit()
+
 import os
 
 class WithTest():
