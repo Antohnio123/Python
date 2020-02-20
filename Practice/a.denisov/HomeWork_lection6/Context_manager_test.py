@@ -5,3 +5,5 @@ import time
 with MyContextManager():
     print(calendar.TextCalendar().formatyear(theyear=2020))
     time.sleep(3)
+
+input()

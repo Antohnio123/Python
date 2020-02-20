@@ -5,7 +5,7 @@ def sum_of_arrays(*args):
     return list(itertools.chain(*args))
 
 
-def length_control(*args, length=5):
+def length_control(*args: str, length=5):
     return list(itertools.filterfalse(lambda x: len(x) < length, [*args]))
 
 

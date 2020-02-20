@@ -1,8 +1,14 @@
-def multiplier(m=1, source=[4, 5, 6]):
-    for i, x in enumerate(source):
-        source[i] *= m
+def multiplier(m=1, source=(1, 2, 3)):
+    result = list(source)
+    for i, x in enumerate(result):
+        result[i] *= m
 
-    return source
+    return result
 
 
-print(multiplier(5))
+print(multiplier())
+print(multiplier())
+print(multiplier())
+print(multiplier(2, [3, 5, 7]))
+print(multiplier())
+print(multiplier(4))
