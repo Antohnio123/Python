@@ -3,27 +3,26 @@ import random
 import tempfile
 import os
 # Задача 1*****************************************
-# print ("\n Задача 1.")
-# class Man:
-#     def __init__(self, name):
-#         self.name = name
-#     def Solve_task(self):
-#         print ("I'm not ready yet :-)")
-# John = Man("John")
-# John.Solve_task()
+print ("\n Задача 1.")
+class Man:
+    def __init__(self, name):
+        self.name = name
+    def Solve_task(self):
+        print ("I'm not ready yet :-)")
+John = Man("John")
+John.Solve_task()
 
 
 # Задача 2*****************************************
-# print ("\n Задача 2.")
-# random.seed()
-# class Pupil:
-#     def __init__(self, name):
-#         self.name = name
-#     def Solve_task(self):
-#         time.sleep(random.randint(3,6))
-#         print ("I'm not ready yet :-)")
-# John = Pupil("John")
-# John.Solve_task()
+print ("\n Задача 2.")
+random.seed()
+class Pupil (Man):
+    def Solve_task(self):
+        time.sleep(random.randint(3,6))
+        print ("I'm not ready yet :-)")
+Dave = Pupil("Dave")
+print ("Dave, solve this problem, please")
+Dave.Solve_task()
 
 # Задача 3*****************************************
 print ("\n Задача 3.")
