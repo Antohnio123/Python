@@ -3,7 +3,8 @@ def comp(x):
     return len(x)==5
 
 def length_control(*args: str, length=5):
-    return list(itertools.filterfalse(lambda x: len(x) < length, [*args]))
+    print (args) # вот тут видно, что пришло в args и почему не работало с [*args]
+    return list(itertools.filterfalse(lambda x: len(x) < length, args[0]))
 
 def length_control1(*args: str, length=5):
     return list(itertools.filterfalse(comp, [*args]))
