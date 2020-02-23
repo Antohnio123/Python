@@ -15,13 +15,13 @@ def create_serialise(number):
 
 
 def read_deserialise():
-    print("Humans from human.data")
+    print("Humans from human.data\n")
 
     with open("human.data", "rb") as file:
         data = pickle.load(file)
     cnt = 1
     for item in data:
-        print('№ - ', cnt, item)
+        item.introduce()
         cnt += 1
 
 
