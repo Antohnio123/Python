@@ -5,10 +5,3 @@ def multiplier(m=1, source=(1, 2, 3)):
 
     return result
 
-
-print(multiplier())
-print(multiplier())
-print(multiplier())
-print(multiplier(2, [3, 5, 7]))
-print(multiplier())
-print(multiplier(4))
