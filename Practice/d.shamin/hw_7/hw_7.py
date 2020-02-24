@@ -1,6 +1,9 @@
 import numpy as np
 import datetime
 
+print()
+print("*********************** Задача 3.1")
+print()
 
 first_day = datetime.date(2020, 2, 10)
 last_day = datetime.date(2020, 2, 18)
@@ -14,18 +17,17 @@ print()
 print("*********************** Задача 2")
 print()
 
+
 import subprocess as sp
 
-args = ["notepad.exe", input("Введи имя файла: ")]
-
-code = sp.Popen(args, stdout=sp.PIPE)
+fl = "/c type " + input("Введи путь к файлу (без кавычек): ")
+args = ["cmd.exe", fl]
+code = sp.Popen(args)
 code.wait()
-res = code.communicate()
-print(res)
 
 
 print()
-print("*********************** Задача 3.1")
+print("*********************** Задача 3.3")
 print()
 
 
@@ -56,3 +58,4 @@ while i < 3:
 with open('human.data', 'wb') as f:
     pickle.dump(lst, f)
 
+print("Люди сохранены в файл human.data")
