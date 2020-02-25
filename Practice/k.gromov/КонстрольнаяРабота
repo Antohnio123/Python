@@ -1,0 +1,112 @@
+1. 7//3 = 2
+
+2. Изменяемые: списки (list), множества (set), словари (dictionary).
+    Изменяемые кортежи (tuple).
+
+3. Да, допустимо.
+
+4.[[3], 1, [3]]
+
+5.
+    Функторами называют объекты, синтаксически подобные функциям,
+    то есть поддерживающие операцию вызова.
+    Функторы позволяют заменить некоторые приёмы, связанные с
+    использованием замыкания, статических переменных и т. п.
+
+Пример:
+
+def addClosure(val1):
+    def closure(val2):
+        return val1 + val2
+    return closure
+
+class AddFunctor(object):
+    def __init__(self, val1):
+        self.val1 = val1
+    def __call__(self, val2):
+        return self.val1 + val2
+
+cl = addClosure(2)
+fn = AddFunctor(2)
+
+print cl(1), fn(1)  # напечатает "3 3"
+
+
+6. Результат:
+1 [1, 3, 2, 3, 4]
+
+7. Конструкция try - except для обработки исключений.
+    else можно применять в try - except конструкциях, т.к.
+    else выполняется в том случае, если исключения не было.
+
+8.
+Атрибуты добавляются с помощью функции __init__()
+__slots__ = ('a', 'b', 'c') препятствует созданию новых атрибутов.
+
+***************************************************************
+class MyClass:
+    __slots__ = ('a', 'b', 'c')
+
+    def __init__(self):
+
+        self.a = 'value a'
+        self.b = 'value b'
+        self.c = 'value c'
+        self.d = 'value d'
+
+    def __str__(self):
+        return ", ".join([self.a, self.b, self.c, self.d])
+
+
+if __name__ == "__main__":
+    try:
+        my_object = MyClass()
+        my_object.d = 'value d'
+        print(my_object)
+    except Exception as e:
+        print("Error! Message: {}".format(e))
+
+Error! Message: 'MyClass' object has no attribute 'd'
+***************************************************************
+
+class MyClass:
+    def __init__(self):
+
+        self.a = 'value a'
+        self.b = 'value b'
+        self.c = 'value c'
+        self.d = 'value d'
+
+    def __str__(self):
+        return ", ".join([self.a, self.b, self.c, self.d])
+
+
+if __name__ == "__main__":
+    try:
+        my_object = MyClass()
+        my_object.d = 'value d'
+        print(my_object)
+    except Exception as e:
+        print("Error! Message: {}".format(e))
+
+value a, value b, value c, value d
+
+
+**********Практика
+
+1.Написать реализацию встроенной функции len()
+функция принимает список, возвращает его длину:
+
+list_a = [1, 2, ['spis'], 3, ['ok'], 5, 7, 10]
+
+print("Длина списка: ", len(list_a))
+
+2.Написать реализацию функции reversed: функция принимает список,
+возвращает его же, располагая элементы в обратном порядке:
+
+s = list(input("Введите список:").split(' '))
+for i in reversed(s):
+    print(i, end=' ')
+
+
+3.
