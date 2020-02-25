@@ -14,3 +14,45 @@ fmap function(x) functor(y)
 7) да
 
 8)
+class MyClass:
+    __slots__ = ('a', 'b', 'c') # предотвращает создание новых атрибутов
+    def __init__(self):
+        self.a = 'value a'
+        self.b = 'value b'
+        self.c = 'value c'
+        self.d = 'value d'
+    def __str__(self):
+        return ", ".join([self.a, self.b, self.c, self.d])
+
+if __name__ == "__main__":
+    try:
+        my_object = MyClass()
+        my_object.d = 'value d'
+        print(my_object)
+    except Exception as e:
+        print("Error! Message: {}".format(e))
+
+# Error! Message: 'MyClass' object has no attribute 'd'
+
+class MyClass:
+
+    def __init__(self):
+        self.a = 'value a'
+        self.b = 'value b'
+        self.c = 'value c'
+
+    def __str__(self):
+        return ", ".join([self.a, self.b, self.c])
+
+
+if __name__ == "__main__":
+    try:
+        my_object = MyClass()
+        setattr(my_object, 'd', 'value d')
+        print(my_object.d)
+        print(my_object)
+    except Exception as e:
+        print("Error! Message: {}".format(e))
+
+# value d
+# value a, value b, value c
