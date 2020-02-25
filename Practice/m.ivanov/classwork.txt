@@ -1,0 +1,209 @@
+Теория:
+
+1. -2
+2. Изменяемые: list, dictionary, set
+3. Да.
+4. [[3], 1, [3]]
+5. Функтор — объект, синтаксически подобный функции, то есть поддерживающий операцию вызова. Для определения функтора
+нужно  перегрузить оператор () с помощью метода __call__
+Но если в пайтоне всё является объектами, то каждая функция в пайтоне является функтором, так как является объектом,
+поддерживающим операцию вызова?
+6. 1, [1, 3, 2, 3, 4] (int - immutable, list -mutable, list_of_args - <type list>, 
+                      [args] - list of lists, args[0]==[1, 3, 5])
+7. Можно.
+8. Добавить новый атрибут:
+   instance_name.attribute_name = value
+   Или:
+   setattr(instance_name, attribute_name, value)
+   Запретить добавление новых атрибутов: видимо, перегрузить метод __setattr__?
+
+Практика:
+1. 
+
+def my_len(array):
+       length = 0
+	   for a in array:
+	       length += 1
+	    return length
+		
+2. 
+
+def my_reverse(array):
+        reversed_array = array[::-1]
+		for i in range(len(array)):
+		    array[i] = reversed_array[i]
+		return array
+		
+3. 
+
+class MyError(Exception):
+    def __init__(self, text):
+        self.txt = text 
+
+		
+def my_range(*args):
+    try:
+	    if len(args) == 3:
+		    start = args[0]
+			stop = args[1]
+			step = args[2]
+		elif len(args) == 2:
+		    start = 0
+			stop = args[0]
+			step = args[1]
+        elif len(args) == 1:
+		    start = 0
+			stop = args[0]
+			step = 1
+		else:
+		    raise MyError('Too many or no arguments')
+		
+		for a in args:
+		    if isinstance(a, int) is False:
+			    raise MyError('Not integer arguments')
+		
+		if step == 0:
+		    raise MyError("Step shouldn't be zero")
+		
+		if start >= stop and step > 0 or stop >= start and step < 0:
+		    raise MyError('Wrong arguments order')
+		
+		i = start
+        result=[]
+        if step > 0:
+            while i < stop:
+                result.append(i)
+                i += step
+        elif step < 0:
+            while i > stop:
+                result.append(i)
+                i += step
+        return result
+	except MyError as mr:
+	    print(mr)
+4. 
+
+def to_title(s):
+        array = s.strip().split()
+		for i in range(len(array)):
+		    array[i] = a[i].capitalize()
+		s = ' '.join(array)
+        return s
+
+5. 
+
+def count_symbol(s,c):
+        i = 0
+        for ch in s:
+            if ch == c:
+                i += 1
+        return i
+
+6. ?
+
+7. def copyfile(source,destination):
+     try:
+        with open(source, 'r') as file:
+            data = file.read()
+        if os.path.exists(destination) is True:
+           raise FileExistError
+        with open(destination, 'w') as file:
+                file.write(data)
+    except FileNotFoundError:
+        print('File not found')
+    except FileExistError:
+        print('File already exist')
+
+7, 8. shutil.copy shutil.copytree
+		
+9. 
+
+class User:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+	def SetName(self, name):
+        self.name = name
+    
+	def GetName(self):
+        return(self.name)
+    
+	def SetAge(self, age):
+        self.age = age
+    
+	def GetAge(self):
+        return(self.age)
+			
+        		
+
+class Worker(User):
+    def __init__(self, name, age, salary):
+        super().__init__(name, age)
+        self.salary = salary
+    
+	def SetSalary(self, salary):
+        self.salary = salary
+    
+	def GetSalary(self):
+        return(self.salary)
+
+10.
+
+class Money:
+    def __init__(self, rub, kop):
+        self.rub = rub
+        self.kop = kop
+        self.sum = self.rub * 100 + self.kop
+		
+    def __add__(self, other):
+        return Money((self.sum + other.sum) // 100, (self.sum + other.sum) % 100)
+		
+    def __sub__(self, other):
+        return Money((self.sum - other.sum) // 100, (self.sum - other.sum) % 100)
+		
+    def __truediv__ (self, n):
+        return Money((int(self.rub / n)), int(self.sum / n - int(self.rub / n) * 100))
+		
+    def __gt__(self, other):
+        if self.sum > other.sum:
+            return True
+        else:
+            return False
+			
+    def __lt__(self, other):
+        if self.sum < other.sum:
+            return True
+        else:
+            return False
+			
+    def __ge__(self, other):
+        if self.sum >= other.sum:
+            return True
+        else:
+            return False
+			
+    def __le__(self, other):
+        if self.sum <= other.sum:
+            return True
+        else:
+            return False
+			
+    def __eq__(self, other):
+        if self.sum == other.sum:
+            return True
+        else:
+            return False
+			
+    def __ne__(self, other):
+        if self.sum != other.sum:
+            return True
+        else:
+            return False
+			
+    def getmoney(self):
+        return(str(self.rub) + ',' + str(self.kop))
+    
+	def getcourse(self, course):
+        self.course = course
+        return (self / course).getmoney()
