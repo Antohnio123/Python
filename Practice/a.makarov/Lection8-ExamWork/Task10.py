@@ -47,7 +47,7 @@ class Money(object):
             self.value = self.value * self.USDexRate
             print('Переведено из долларов в рубли, составляет ' + self.__str__() + ' рубля(ей)')
         self.Rubles = not self.Rubles
-
+# Код закончен, теперь проверка: ---------------------------------------------------------------------
 
 
 Salary = Money()

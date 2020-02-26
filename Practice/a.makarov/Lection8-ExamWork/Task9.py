@@ -15,6 +15,7 @@ class Worker (User):
         self.salary=salary
     def getSalary (self):
         return self.salary
+
 John = Worker()
 John.setName("John")
 John.setAge(25)
