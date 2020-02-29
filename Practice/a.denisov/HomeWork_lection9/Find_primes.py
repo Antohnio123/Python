@@ -2,6 +2,8 @@ import threading
 import multiprocessing
 import time
 
+intervals = {3: 10000, 10001: 20000, 20001: 30000}
+
 
 def find_primes(start=3, stop=10):  # Для нахождения простых чисел используем решето Эрастофена
     numbers = list(range(start, stop + 1))
@@ -26,14 +28,12 @@ def benchmark(func):  # Обертка для оценки производит�
 
 @benchmark
 def primes_consistently():
-    find_primes(stop=10000)
-    find_primes(10001, 20000)
-    find_primes(20001, 30000)
+    for start, stop in intervals.items():
+        find_primes(start, stop)
 
 
 @benchmark
 def primes_multithread():
-    intervals = {3: 10000, 10001: 20000, 20001: 30000}
     threads = []
     for start, stop in intervals.items():
         calc = threading.Thread(target=find_primes, args=(start, stop))
@@ -45,7 +45,6 @@ def primes_multithread():
 
 @benchmark
 def primes_multiprocess():
-    intervals = {3: 10000, 10001: 20000, 20001: 30000}
     processes = []
     for start, stop in intervals.items():
         calc = multiprocessing.Process(target=find_primes, args=(start, stop))
