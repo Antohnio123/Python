@@ -1,3 +1,31 @@
+from multiprocessing import Pool
+def cube(x):
+    return x**3
+
+if __name__ == '__main__':
+    pool = Pool(processes=4)
+    res = pool.map(cube, range(1,7))
+    print(res)
+
+exit()
+
+from multiprocessing import Process, Pipe
+
+def f(conn):
+    conn.send(['hello', 11, None])
+    #print('Client receives: {}'.format(conn.recv()))
+
+if __name__ == '__main__':
+    parent_conn, child_conn = Pipe()
+
+    p = Process(target=f, args=(child_conn,))
+    p.start()
+
+    print('Server receives: {}'.format(parent_conn.recv()))
+    #child_conn.send(['python', 3])
+    p.join()
+
+exit()
 
 from threading import Thread
 import time
@@ -10,10 +38,9 @@ def count(n):
 c = 80000000
 
 if __name__ == '__main__': # обязательно для многопроцессного приложения
-    # c = 80000000
     start = time.time()
-    p1 = multiprocessing.Process(target=count,args=(c,))
-    p2 = multiprocessing.Process(target=count,args=(c,))
+    p1 = multiprocessing.Process(target=count, args=(c,))
+    p2 = multiprocessing.Process(target=count, args=(c,))
     p1.start()
     p2.start()
     p1.join()
@@ -34,34 +61,3 @@ if __name__ == '__main__': # обязательно для многопроце�
     t2.join()
     print('{0:.2f} sec.'.format(time.time() - start))
     exit()
-
-#############################
-
-import threading
-import time
-
-def t1(x, event):
-    print("Начинаю работать!")
-    time.sleep(5)
-    event.set()
-    pass
-
-def t2(x, event):
-    print("Жду!")
-    event.wait()
-    event.clear()
-    print("Дождался!")
-    pass
-
-
-event = threading.Event()
-
-tr1 = threading.Thread(name="server", target=t1, args=(0 ,event))
-tr1.start()
-
-tr2 = threading.Thread(name="client", target=t2, args=(1 ,event))
-tr2.start()
-
-
-tr1.join()
-tr2.join()
