@@ -1,7 +1,6 @@
 from urllib import request
 import re
 
- #нормально работает только для google =)
 
  #Поиск абсолютных url-путей
 def get_absolutely_path(string):
@@ -30,9 +29,10 @@ def add_path(repl, relative, absolute = None):
 def working(links):
     working_links = []
     for link in links:
-        if request.urlopen(request.Request(link)).getcode() == 200:
-            working_links.append(link)
-        else:
+        try:
+            if request.urlopen(request.Request(link)).getcode() == 200:
+                working_links.append(link)
+        except:
             pass
     return working_links
 
