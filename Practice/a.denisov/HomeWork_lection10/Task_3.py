@@ -13,8 +13,8 @@ def url_check(web_page):
         start = url_end
         finded_url = str(web_page)[url_start:url_end]
         try:
-            web_url = urllib.request.urlopen("http"+finded_url)
-            if web_url.getcode() == 200:
+            web_url = urllib.request.Request("http"+finded_url, method='HEAD')
+            if urllib.request.urlopen(url=web_url).getcode() == 200:
                 print(f"http{finded_url} - good")
         except ValueError:
             break
