@@ -60,10 +60,6 @@ def linkcheck(web_site):
             b += Ind1+Ind2 + 7
             print (str(n) + ' Checking the link ' +  link)
             n+=1
-            # Надо решить, стоит ли делать исключения из проверямых ссылок - якоря #, внутренние ссылки ./ и т.д.
-            # И стоит ли использовать Request.get_full_url()
-
-
             urlcheck(link, web_site)
     except ValueError:
         pass
